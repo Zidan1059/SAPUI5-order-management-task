@@ -1,0 +1,59 @@
+<mvc:View controllerName="sap.project.controller.OrderPage" xmlns:mvc="sap.ui.core.mvc" xmlns:flex="sap.f" displayBlock="true" xmlns:m="sap.m" xmlns="sap.ui.table" xmlns:c="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:semantic="sap.f.semantic" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+    <Table id="table" rows="{oOrderModel>/orderList}" rowSelectionChange=".onItemSelected" selectionBehavior="RowOnly" visibleRowCount="15" selectionMode="Single">
+        <extension>
+            <m:OverflowToolbar style="Clear">
+                <m:Title id="title" text="Orders" />
+                <m:ToolbarSpacer />
+
+
+                <m:Button id="new_button" icon="sap-icon://add" text="{i18n>new}" type="Accept" press="onNewPressed" />
+
+            </m:OverflowToolbar>
+        </extension>
+
+        <columns>
+            <Column width="7rem" filterProperty="orderid">
+                <m:Label text="{i18n>orderno}" />
+                <template>
+                    <m:Text text="{oOrderModel>orderid}" wrapping="false" />
+                </template>
+            </Column>
+            <Column width="10rem" filterProperty="customerName">
+                <m:Label text="{i18n>customerName}" />
+                <template>
+                    <m:Text text="{oOrderModel>customerName}" wrapping="false" />
+                </template>
+            </Column>
+            <Column width="10rem" filterProperty="orderid">
+                <m:Label text="{i18n>address}" />
+                <template>
+                    <m:Text text="{oOrderModel>address}" wrapping="false" />
+                </template>
+            </Column>
+
+            <Column width="7rem" filterProperty="orderid">
+                <m:Label text="{i18n>orderdate}" />
+                <template>
+                    <m:Text text="{oOrderModel>orderDate}" wrapping="false" />
+                </template>
+            </Column>
+            <Column id="status" width="5rem">
+                <m:Label text="{i18n>status}" />
+                <template>
+                    <m:Button icon="{= ${oOrderModel>status} === true ? 'sap-icon://accept' :  'sap-icon://decline'}" press=".onApproveDialogPress(${oOrderModel>orderid}, ${oOrderModel>status})" ariaHasPopup="Dialog" />
+                </template>
+            </Column>
+            <Column>
+                <m:Label text="{i18n>action}" />
+                <template>
+                    <m:Button icon="sap-icon://delete" press=".onDeleteButtonPressed(${oOrderModel>orderid})" ariaHasPopup="Dialog" visible="{oOrderModel>visible}" />
+                </template>
+            </Column>
+        </columns>
+
+
+    </Table>
+
+
+</mvc:View>

@@ -1,0 +1,31 @@
+{
+    "orderList": [
+        {
+            "orderid": "0001",
+            "customerName": "Zidan(1234)",
+            "country": "Bangladesh",
+            "city": "Dhaka",
+            "orderDate": "Oct 18,2022",
+            "status": false,
+            "visible": true
+        },
+        {
+            "orderid": "0002",
+            "customerName": "John(4567)",
+            "country": "Bangladesh",
+            "city": "Dhaka",
+            "orderDate": "Nov 13,2022",
+            "status": true,
+            "visible": false
+        },
+        {
+            "orderid": "0003",
+            "customerName": "Maria(3411)",
+            "country": "Bangladesh",
+            "city": "Dhaka",
+            "orderDate": "Oct 20,2022",
+            "status": false,
+            "visible": true
+        }
+    ]
+}

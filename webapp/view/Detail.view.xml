@@ -1,0 +1,107 @@
+<mvc:View controllerName="sap.project.controller.Detail" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+
+    <FlexBox alignItems="End" justifyContent="End">
+        <items>
+            <Button id="cancel_button" icon="sap-icon://decline" type="Accept" press="onCancelPressed" />
+        </items>
+    </FlexBox>
+
+    <f:Form id="detail_form" editable="true">
+
+        <f:title>
+            <core:Title text="Order Info:" />
+
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>formorderno}">
+                        <f:fields>
+                            <Input id="app_input_orderno" value="" enabled="{oSaveModel>/saveMode}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>formcustomername}">
+                        <f:fields>
+                            <Input id="app_input_customername" value="" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" width="100%" class="sapUiSmallMarginBottom" />
+                        </f:fields>
+                    </f:FormElement>
+
+                    <f:FormElement>
+                        <FlexBox>
+                            <items>
+                                <FlexBox id="countryFlexBox" direction="Column" width="100%" class="sapUiTinyMarginEnd">
+                                    <Label id="app_label_country" text="{i18n>formcountry}" labelFor="app_input_country" />
+                                    <Select width="100%" id="app_input_country" forceSelection="false" selectedKey="" items="{oCountry>/countryList}" change="onCountryChange">
+                                        <items>
+                                            <core:Item key="{oCountry>countryName}" text="{oCountry>countryName}" />
+                                        </items>
+                                    </Select>
+                                    <!-- <Select width="100%" id="app_input_country" change="handleChange" selectedKey="{/countryList}" >
+                                        <items>
+                                            <core:Item key="{country>}" text="{country>}" />
+                                        </items>
+                                    </Select> -->
+                                </FlexBox>
+                                <FlexBox id="cityFlexBox" direction="Column" width="100%">
+
+                                    <Label id="app_label_city" text="{i18n>formcity}" labelFor="app_input_city" />
+                                    <Select width="100%" forceSelection="false" id="app_input_city" selectedKey="" items="{oCityModel>/cityLists}">
+                                        <items>
+                                            <core:Item key="{oCityModel>cityName}" text="{oCityModel>cityName}" />
+                                        </items>
+                                    </Select>
+                                </FlexBox>
+                            </items>
+                        </FlexBox>
+                        <!-- <f:fields>
+                            <Select width="100%" id="app_input_country"></Select>
+                            <Select width="100%" id="app_input_city"></Select>
+                        </f:fields> -->
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>formdate}">
+                        <f:fields>
+                            <DatePicker id="app_input_date" placeholder="Enter Date" change="handleDateChange" class="sapUiSmallMarginBottom" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+
+
+        </f:formContainers>
+
+        <!-- <Label id="app_label_orderno" text="{i18n>formorderno}" labelFor="app_input_orderno" />
+        <Input id="app_input_orderno" value="" />
+
+        <Label id="app_label_customername" text="{i18n>formcustomername}" labelFor="app_input_customername" />
+        <Input id="app_input_customername" value="" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" width="100%" class="sapUiSmallMarginBottom" />
+
+
+        <FlexBox id="MainLeftFlexBoxRow_02" width="100%">
+            <FlexBox id="countryFlexBox" direction="Column" width="100%" class="sapUiTinyMarginEnd">
+                <Label id="app_label_country" text="{i18n>formcountry}" labelFor="app_input_country" />
+                <Select width="100%" id="app_input_country"></Select>
+
+            </FlexBox>
+            <FlexBox id="cityFlexBox" direction="Column" width="100%">
+                <Label id="app_label_city" text="{i18n>formcity}" labelFor="app_input_city" />
+                <Select width="100%" id="app_input_city"></Select>
+            </FlexBox>
+
+        </FlexBox>
+
+        <Label id="app_label_date" text="{i18n>formdate}" labelFor="app_input_date" />
+        <DatePicker id="app_input_date" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom" />
+        <Label text="ValueHelpDialog with whitespace visualisation" labelFor="whiteSpaces" /> -->
+
+
+    </f:Form>
+    <FlexBox alignItems="Center" id="app_submit" direction="Column" width="100%">
+        <Button id="app_submit_btn" text="{i18n>update}" press="onUpdatePressed" visible="{editModel>/editmode}" />
+        <Button id="app_new_btn" text="{i18n>submit}" press="onSubmitPressed" visible="{oSaveModel>/saveMode}" />
+    </FlexBox>
+
+
+</mvc:View>

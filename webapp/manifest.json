@@ -1,0 +1,105 @@
+{
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "sap.project",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "invoiceRemote": {
+                "uri": "https://services.odata.org/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+
+    "sap.ui5": {
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+
+        "rootView": {
+            "viewName": "sap.project.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.93",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.table": {},
+                "sap.f": {},
+                "sap.uxap": {},
+                "sap.ui.webc.main": {}
+            }
+        },
+        "config": {
+            "fullWidth": true
+        },
+
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "type": "View",
+                "viewType": "XML",
+                "path": "sap.project.view",
+                "controlId": "flexibleColumnLayout",
+                "transition": "slide",
+                "bypassed": {},
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": ":layout:",
+                    "name": "orderpage",
+                    "target": ["orderpage", "detail"]
+                },
+                {
+                    "pattern": "detail/{orderid}/{layout}",
+                    "name": "detail",
+                    "target": ["orderpage", "detail"]
+                }
+            ],
+            "targets": {
+                "orderpage": {
+                    "name": "OrderPage",
+                    "controlAggregation": "beginColumnPages"
+                },
+                "detail": {
+                    "name": "Detail",
+                    "controlAggregation": "midColumnPages"
+                }
+            }
+        },
+
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sap.project.i18n.i18n"
+                }
+            }
+        }
+    }
+}

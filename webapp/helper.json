@@ -1,0 +1,28 @@
+{
+    "helpList": [
+        {
+            "customer": "BP1720",
+            "customerName": "BP1720-Florin USA Inc.",
+            "email": "Tennessee",
+            "mobile": "Clarksville"
+        },
+        {
+            "customer": "BP1940",
+            "customerName": "BP1940-Florin USA Inc.",
+            "email": "Tennessee",
+            "mobile": "Clarksville"
+        },
+        {
+            "customer": "BP2320",
+            "customerName": "BP2320-Florano",
+            "email": "Modena",
+            "mobile": "Fiorano Modenese(MO)"
+        },
+        {
+            "customer": "BP2740",
+            "customerName": "BP2740-Florano",
+            "email": "Modena",
+            "mobile": "Fiorano Modenese(MO)"
+        }
+    ]
+}
