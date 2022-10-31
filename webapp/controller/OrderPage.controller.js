@@ -123,24 +123,27 @@ sap.ui.define(
                 });
             },
             onItemSelected(oEvent) {
-                let oData = oEvent.getParameter("rowContext").getObject();
+                if (oEvent.getParameter("rowContext")) {
+                    let oData = oEvent.getParameter("rowContext").getObject();
 
-                console.log("sadasd", oData);
+                    console.log("sadasd", oData);
 
-                if (oData.status) {
-                    MessageToast.show("Order already delivered");
-                } else {
-                    this.setData(oData);
+                    if (oData.status) {
+                        MessageToast.show("Order already delivered");
+                    } else {
+                        this.setData(oData);
 
-                    var productPath = oEvent.getSource();
+                        var productPath = oEvent.getSource();
 
-                    // product = productPath.split("/").slice(-1).pop();
-                    console.log("productPath", productPath);
+                        // product = productPath.split("/").slice(-1).pop();
+                        console.log("productPath", productPath);
 
-                    this.oRouter.navTo("detail", {
-                        layout: fioriLibrary.LayoutType.TwoColumnsBeginExpanded,
-                        orderid: oData.orderid,
-                    });
+                        this.oRouter.navTo("detail", {
+                            layout: fioriLibrary.LayoutType
+                                .TwoColumnsBeginExpanded,
+                            orderid: oData.orderid,
+                        });
+                    }
                 }
             },
 
