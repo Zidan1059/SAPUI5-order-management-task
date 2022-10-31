@@ -143,45 +143,49 @@ sap.ui.define(
                     let filterdData = oLocalStorage.orderList.filter((item) => {
                         return item.orderid == itemId;
                     });
-                    console.log("item Filter", filterdData);
-                    this.byId("app_input_orderno").setValue(
-                        filterdData[0].orderid
-                    );
-                    this.byId("app_input_customername").setValue(
-                        filterdData[0].customerName
-                    );
-                    this.byId("app_input_date").setValue(
-                        filterdData[0].orderDate
-                    );
-                    let city = filterdData[0].address.substr(
-                        0,
-                        filterdData[0].address.indexOf(",")
-                    );
-                    let country = filterdData[0].address
-                        .substr(filterdData[0].address.indexOf(","))
-                        .slice(1);
-                    console.log("city", city);
-                    console.log("country", country);
+                    if (filterdData.length != 0) {
+                        console.log("item Filter", filterdData);
+                        this.byId("app_input_orderno").setValue(
+                            filterdData[0].orderid
+                        );
+                        this.byId("app_input_customername").setValue(
+                            filterdData[0].customerName
+                        );
+                        this.byId("app_input_date").setValue(
+                            filterdData[0].orderDate
+                        );
+                        let city = filterdData[0].address.substr(
+                            0,
+                            filterdData[0].address.indexOf(",")
+                        );
+                        let country = filterdData[0].address
+                            .substr(filterdData[0].address.indexOf(","))
+                            .slice(1);
+                        console.log("city", city);
+                        console.log("country", country);
 
-                    let countryData = JSON.parse(
-                        localStorage.getItem("cityLists")
-                    ).countryList;
-                    console.log("countryData", countryData);
-                    const cityListByCountry = countryData.filter(
-                        (item) => item.countryName == country
-                    );
+                        let countryData = JSON.parse(
+                            localStorage.getItem("cityLists")
+                        ).countryList;
+                        console.log("countryData", countryData);
+                        const cityListByCountry = countryData.filter(
+                            (item) => item.countryName == country
+                        );
 
-                    let oCityModel = new JSONModel({
-                        cityLists: cityListByCountry[0].cityList,
-                    });
+                        let oCityModel = new JSONModel({
+                            cityLists: cityListByCountry[0].cityList,
+                        });
 
-                    this.getView().setModel(oCityModel, "oCityModel");
-                    console.log("cityListByCountry", cityListByCountry);
+                        this.getView().setModel(oCityModel, "oCityModel");
+                        console.log("cityListByCountry", cityListByCountry);
 
-                    this.getView()
-                        .byId("app_input_country")
-                        .setSelectedKey(country);
-                    this.getView().byId("app_input_city").setSelectedKey(city);
+                        this.getView()
+                            .byId("app_input_country")
+                            .setSelectedKey(country);
+                        this.getView()
+                            .byId("app_input_city")
+                            .setSelectedKey(city);
+                    }
 
                     let oEditModel = new JSONModel({
                         editmode: true,
